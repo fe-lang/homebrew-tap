@@ -14,6 +14,10 @@ class Fe < Formula
   end
 
   def install
-    bin.install "fe"
+    if OS.mac?
+      bin.install "fe_mac" => "fe"
+    else
+      bin.install "fe_amd64" => "fe"
+    end
   end
 end
