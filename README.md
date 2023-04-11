@@ -1,10 +1,10 @@
-# Fe-lang Fe
+# Fe-lang tap
 
-## How do I install these formulae?
+## How do I install this?
 
-`brew install fe-lang/fe/<formula>`
+`brew install fe-lang/tap/fe`
 
-Or `brew tap fe-lang/fe` and then `brew install <formula>`.
+Or `brew tap fe-lang/tap` and then `brew install fe`.
 
 ## Documentation
 
