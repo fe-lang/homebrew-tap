@@ -1,5 +1,5 @@
 class Fe < Formula
-  desc "fe programming language, for the ethereum virtual machine"
+  desc "Compiler for the Fe programming language"
   homepage "https://github.com/ethereum/fe"
   version "0.22.0"
 
