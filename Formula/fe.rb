@@ -1,17 +1,17 @@
+
 class Fe < Formula
   desc "Compiler for the Fe programming language"
   homepage "https://github.com/ethereum/fe"
-  version "0.22.0"
+  version "0.24.0"
 
-  # TODO: arm builds: `&& Hardware::CPU.arm?` vs `Hardware::CPU.intel`
   if OS.mac?
-    url "https://github.com/ethereum/fe/releases/download/v#{version}/fe_mac"
-    sha256 "14653563e096c348cafb083b793430ed0779ef6baaee84318bad10346af8048a"
+    url "https://github.com/ethereum/fe/releases/download/v0.24.0/fe_mac"
+    sha256 "a6529f56ad32ed67f387ef85d7fe84f87d302ac12474f8fda93a442836f5073f"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/ethereum/fe/releases/download/v#{version}/fe_amd64"
-    sha256 "47527cd4b12d12d17ed32de7edbefc913e9eab12f4097b3ab62c311e25e63cdb"
+    url "https://github.com/ethereum/fe/releases/download/v0.24.0/fe_amd64"
+    sha256 "19a5fb1d9c92302f75a5e1c39f3a47df9c037fd69fc75bb2d5e78823a34ccd36"
   end
 
   def install
@@ -22,3 +22,4 @@ class Fe < Formula
     end
   end
 end
+
