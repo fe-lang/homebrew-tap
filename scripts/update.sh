@@ -14,8 +14,7 @@ sha256_linux=$(curl -Ls "$url_linux" | shasum -a 256 | awk '{print $1}')
 sha256_mac=$(curl -Ls "$url_mac" | shasum -a 256 | awk '{print $1}')
 
 
-blueprint="
-class Fe < Formula
+blueprint="class Fe < Formula
   desc \"Compiler for the Fe programming language\"
   homepage \"https://github.com/ethereum/fe\"
   version \"${version}\"
@@ -37,7 +36,6 @@ class Fe < Formula
       bin.install \"fe_amd64\" => \"fe\"
     end
   end
-end
-"
+end"
 
 echo "$blueprint"
