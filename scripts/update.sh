@@ -17,8 +17,7 @@ sha256_mac=$(curl -Ls "$url_mac" | shasum -a 256 | awk '{print $1}')
 blueprint="class Fe < Formula
   desc \"Compiler for the Fe programming language\"
   homepage \"https://github.com/ethereum/fe\"
-  version \"${version}\"
-
+  
   if OS.mac?
     url \"https://github.com/ethereum/fe/releases/download/v${version}/fe_mac\"
     sha256 \"${sha256_mac}\"
