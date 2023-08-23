@@ -19,10 +19,11 @@ jobs:
       - name: Run second script if the versions differ
         if: steps.version_check.outcome == 'failure'
         run: |
+          ./scripts/archive-current-formula.sh
           ./scripts/update.sh > Formula/fe.rb
           git config --global user.email "github-actions-bot@example.com"
           git config --global user.name "GitHub Actions Bot"
-          git checkout -b testbranch
+          git checkout -b testbranch2
           git add .
           git commit -m "Automatic commit via GitHub Actions"
-          git push origin testbranch  # Replace with the desired branch
+          git push origin testbranch2  # Replace with the desired branch
