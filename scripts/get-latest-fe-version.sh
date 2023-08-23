@@ -1,0 +1,1 @@
+echo $(curl -s -L -o /dev/null -w %{url_effective} https://github.com/ethereum/fe/releases/latest | sed 's/.*tag\/v//')
