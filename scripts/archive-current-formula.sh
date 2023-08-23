@@ -7,7 +7,7 @@ cd $(dirname "$0") || exit
 input_file="../Formula/fe.rb"
 
 # Extract the version from the input file
-version=$(grep -o 'version "[^"]*' "$input_file" | awk -F'"' '{print $2}')
+version=$(grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+' "$input_file" | head -n 1 | sed 's/v//')
 
 # Check if version is not empty
 if [ -n "$version" ]; then
