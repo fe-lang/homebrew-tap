@@ -12,8 +12,8 @@ formula_version=$(./get-formula-version.sh)
 # Compare the versions
 if [ "$latest_version" != "$formula_version" ]; then
   echo "Versions differ: Latest version is $latest_version, Formula version is $formula_version"
-  exit 1
+  exit 0
 else
   echo "Versions are the same: $latest_version"
-  exit 0
+  exit 1
 fi

@@ -2,7 +2,7 @@
 
 if [ $# -ne 1 ]; then
   # If the script is invoked without version parameter, it will figure out the latest release automatically
-  version=$(curl -s -L -o /dev/null -w %{url_effective} https://github.com/ethereum/fe/releases/latest | sed 's/.*tag\/v//')
+  version=$(./get-latest-fe-version.sh)
 else
   version=$1
 fi
