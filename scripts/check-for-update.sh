@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Change the working directory to the script's directory
 cd $(dirname "$0") || exit
 
