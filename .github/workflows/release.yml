@@ -1,0 +1,26 @@
+name: cut new release
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run first script
+        run: |
+          ./scripts/check-for-update.sh
+        id: version_check
+      - name: Run second script if the versions differ
+        run: |
+          ./scripts/archive-current-formula.sh
+          ./scripts/update.sh > Formula/fe.rb
+          git config --global user.email "github-actions-bot@example.com"
+          git config --global user.name "GitHub Actions Bot"
+          git add .
+          git commit -m "Added new Release via GitHub Actions"
+          git push origin main

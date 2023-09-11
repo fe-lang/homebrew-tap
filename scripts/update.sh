@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# Change the working directory to the script's directory
+cd $(dirname "$0") || exit
+
 if [ $# -ne 1 ]; then
   # If the script is invoked without version parameter, it will figure out the latest release automatically
-  version=$(curl -s -L -o /dev/null -w %{url_effective} https://github.com/ethereum/fe/releases/latest | sed 's/.*tag\/v//')
+  version=$(./get-latest-fe-version.sh)
 else
   version=$1
 fi
@@ -17,7 +20,6 @@ sha256_mac=$(curl -Ls "$url_mac" | shasum -a 256 | awk '{print $1}')
 blueprint="class Fe < Formula
   desc \"Compiler for the Fe programming language\"
   homepage \"https://github.com/ethereum/fe\"
-  version \"${version}\"
 
   if OS.mac?
     url \"https://github.com/ethereum/fe/releases/download/v${version}/fe_mac\"
@@ -36,6 +38,7 @@ blueprint="class Fe < Formula
       bin.install \"fe_amd64\" => \"fe\"
     end
   end
-end"
+end
+"
 
 echo "$blueprint"
