@@ -3,13 +3,13 @@ class Fe < Formula
   homepage "https://github.com/ethereum/fe"
 
   if OS.mac?
-    url "https://github.com/ethereum/fe/releases/download/vnull/fe_mac"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    url "https://github.com/ethereum/fe/releases/download/v0.26.0/fe_mac"
+    sha256 "9af396f07152be4c5e8ff4882191fefbde4457135064ec1e401da936d071fdce"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/ethereum/fe/releases/download/vnull/fe_amd64"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    url "https://github.com/ethereum/fe/releases/download/v0.26.0/fe_amd64"
+    sha256 "a740b2274ad787e8340a418cb76cc3ac8508c38f2eb49aa5adca6d4047b44703"
   end
 
   def install
