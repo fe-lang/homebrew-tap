@@ -1,4 +1,4 @@
-class Fe < Formula
+class FeAT0250 < Formula
   desc "Compiler for the Fe programming language"
   homepage "https://github.com/ethereum/fe"
 
@@ -20,4 +20,3 @@ class Fe < Formula
     end
   end
 end
-

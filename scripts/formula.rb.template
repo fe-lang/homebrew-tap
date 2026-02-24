@@ -1,0 +1,36 @@
+class Fe < Formula
+  desc "Compiler for the Fe programming language"
+  homepage "https://github.com/argotorg/fe"
+
+  if OS.mac? && Hardware::CPU.arm?
+    url "https://github.com/argotorg/fe/releases/download/v__VERSION__/fe_mac_arm64"
+    sha256 "__SHA256_MAC_ARM64__"
+  end
+
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://github.com/argotorg/fe/releases/download/v__VERSION__/fe_mac_amd64"
+    sha256 "__SHA256_MAC_AMD64__"
+  end
+
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://github.com/argotorg/fe/releases/download/v__VERSION__/fe_linux_amd64"
+    sha256 "__SHA256_LINUX_AMD64__"
+  end
+
+  if OS.linux? && Hardware::CPU.arm?
+    url "https://github.com/argotorg/fe/releases/download/v__VERSION__/fe_linux_arm64"
+    sha256 "__SHA256_LINUX_ARM64__"
+  end
+
+  def install
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "fe_mac_arm64" => "fe"
+    elsif OS.mac? && Hardware::CPU.intel?
+      bin.install "fe_mac_amd64" => "fe"
+    elsif OS.linux? && Hardware::CPU.arm?
+      bin.install "fe_linux_arm64" => "fe"
+    else
+      bin.install "fe_linux_amd64" => "fe"
+    end
+  end
+end
