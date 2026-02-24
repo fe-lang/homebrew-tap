@@ -4,7 +4,7 @@
 cd $(dirname "$0") || exit
 
 # Define your GitHub repository owner and name
-repo_owner="ethereum"
+repo_owner="argotorg"
 repo_name="fe"
 
 # Make the API request and store the response in a variable

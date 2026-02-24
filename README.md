@@ -2,9 +2,9 @@
 
 ## How do I install this?
 
-`brew install fe-lang/tap/fe`
+`brew install argotorg/tap/fe`
 
-Or `brew tap fe-lang/tap` and then `brew install fe`.
+Or `brew tap argotorg/tap` and then `brew install fe`.
 
 ## Documentation
 
