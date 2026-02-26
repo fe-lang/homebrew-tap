@@ -8,10 +8,11 @@ repo_owner="argotorg"
 repo_name="fe"
 
 # Make the API request and store the response in a variable
-response=$(curl -s "https://api.github.com/repos/${repo_owner}/${repo_name}/releases/latest")
+# Use /releases (not /releases/latest) to include pre-releases
+response=$(curl -s "https://api.github.com/repos/${repo_owner}/${repo_name}/releases")
 
-# Check if the request was successful (HTTP status code 200)
-if name=$(echo "${response}" | jq -r ".name")
+# Extract the name of the most recent release (first entry)
+if name=$(echo "${response}" | jq -r ".[0].name")
 then
   # Remove a leading "v" from the name (if present)
   name_without_v="${name#v}"
