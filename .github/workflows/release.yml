@@ -11,11 +11,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run first script
-        run: |
-          ./scripts/check-for-update.sh
+      - name: Check for update
         id: version_check
-      - name: Run second script if the versions differ
+        run: |
+          if ./scripts/check-for-update.sh; then
+            echo "update_available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "update_available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update formula
+        if: steps.version_check.outputs.update_available == 'true'
         run: |
           ./scripts/archive-current-formula.sh
           ./scripts/update.sh > Formula/fe.rb
