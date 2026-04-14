@@ -5,6 +5,6 @@ cd "$(dirname "$0")" || exit
 
 file_path="../Formula/fe.rb"
 
-# Extract version using grep
-version=$(grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+[^/]*' "${file_path}" | head -n 1 | sed 's/v//' || true)
+# Extract version from the explicit formula version declaration
+version=$(grep -E '^[[:space:]]*version "' "${file_path}" | head -n 1 | sed -E 's/^[[:space:]]*version "([^"]+)".*/\1/' || true)
 echo "${version}"
