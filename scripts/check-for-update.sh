@@ -1,12 +1,17 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 # Change the working directory to the script's directory
 cd "$(dirname "$0")" || exit
 
 # Run the first script to get the latest FE version
-latest_version=$(./get-latest-fe-version.sh)
+if [[ $# -eq 1 ]]
+then
+  latest_version=$1
+else
+  latest_version=$(./get-latest-fe-version.sh)
+fi
 
 # Run the second script to get the formula version
 formula_version=$(./get-formula-version.sh)

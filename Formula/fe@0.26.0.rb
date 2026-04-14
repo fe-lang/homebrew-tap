@@ -1,6 +1,7 @@
 class FeAT0260 < Formula
   desc "Compiler for the Fe programming language"
   homepage "https://github.com/ethereum/fe"
+  version "0.26.0"
 
   if OS.mac?
     url "https://github.com/ethereum/fe/releases/download/v0.26.0/fe_mac"

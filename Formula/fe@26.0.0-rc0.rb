@@ -1,6 +1,7 @@
-class Fe < Formula
+class FeAT2600Rc0 < Formula
   desc "Compiler for the Fe programming language"
   homepage "https://github.com/argotorg/fe"
+  version "26.0.0-rc0"
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/argotorg/fe/releases/download/v26.0.0-rc0/fe_mac_arm64"
