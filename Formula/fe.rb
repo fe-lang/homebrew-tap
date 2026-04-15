@@ -3,7 +3,6 @@ class Fe < Formula
   homepage "https://github.com/argotorg/fe"
   version "26.0.1"
   version_scheme 1
-  depends_on "openssl@3" if OS.mac?
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/argotorg/fe/releases/download/v26.0.1/fe_mac_arm64"
