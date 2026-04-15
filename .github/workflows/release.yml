@@ -5,9 +5,15 @@ on:
     - cron: '*/15 * * * *'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   trigger:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -15,7 +21,10 @@ jobs:
       - name: Check for update
         id: version_check
         run: |
-          if ./scripts/check-for-update.sh; then
+          latest_version=$(./scripts/get-latest-fe-version.sh)
+          echo "latest_version=${latest_version}" >> "$GITHUB_OUTPUT"
+
+          if ./scripts/check-for-update.sh "${latest_version}"; then
             echo "update_available=true" >> "$GITHUB_OUTPUT"
           else
             echo "update_available=false" >> "$GITHUB_OUTPUT"
@@ -23,11 +32,18 @@ jobs:
 
       - name: Update formula
         if: steps.version_check.outputs.update_available == 'true'
+        env:
+          VERSION: ${{ steps.version_check.outputs.latest_version }}
         run: |
+          tmp_formula=$(mktemp)
+          trap 'rm -f "${tmp_formula}"' EXIT
+          ./scripts/update.sh "${VERSION}" > "${tmp_formula}"
+          test "$(FORMULA_PATH="${tmp_formula}" ./scripts/get-formula-version.sh)" = "${VERSION}"
           ./scripts/archive-current-formula.sh
-          ./scripts/update.sh > Formula/fe.rb
+          mv "${tmp_formula}" Formula/fe.rb
+          trap - EXIT
           git config --global user.email "github-actions-bot@example.com"
           git config --global user.name "GitHub Actions Bot"
-          git add .
+          git add Formula
           git commit -m "Added new Release via GitHub Actions"
           git push origin main
