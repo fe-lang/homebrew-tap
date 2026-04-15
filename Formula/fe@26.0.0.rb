@@ -2,6 +2,7 @@ class FeAT2600 < Formula
   desc "Compiler for the Fe programming language"
   homepage "https://github.com/argotorg/fe"
   version "26.0.0"
+  depends_on "openssl@3" if OS.mac?
 
   keg_only :versioned_formula
 

@@ -2,6 +2,7 @@ class Fe < Formula
   desc "Compiler for the Fe programming language"
   homepage "https://github.com/argotorg/fe"
   version "__VERSION__"
+  depends_on "openssl@3" if OS.mac?
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/argotorg/fe/releases/download/v__VERSION__/fe_mac_arm64"
