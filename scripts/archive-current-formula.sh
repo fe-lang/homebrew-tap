@@ -25,7 +25,7 @@ then
   else
     # Rename the file
     mv "${input_file}" "${new_filename}"
-    ruby -e 'path, class_name = ARGV; contents = File.read(path); contents.sub!(/^class\s+\w+\s+<\s+Formula$/, "class #{class_name} < Formula") or abort("Failed to update formula class name in #{path}"); contents.sub!(/^(  version ".*"\n)/, "\\1\n  keg_only :versioned_formula\n") or abort("Failed to mark #{path} as keg-only"); File.write(path, contents)' "${new_filename}" "${class_name}"
+    ruby -e 'path, class_name = ARGV; contents = File.read(path); contents.sub!(/^class\s+\w+\s+<\s+Formula$/, "class #{class_name} < Formula") or abort("Failed to update formula class name in #{path}"); contents.sub!(/^(  version ".*"\n(?:  version_scheme \d+\n)?)/, "\\1  keg_only :versioned_formula\n") or abort("Failed to mark #{path} as keg-only"); File.write(path, contents)' "${new_filename}" "${class_name}"
     echo "File renamed to '${new_filename}'."
   fi
 else

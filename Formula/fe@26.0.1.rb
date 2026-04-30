@@ -3,8 +3,8 @@ class FeAT2601 < Formula
   homepage "https://github.com/argotorg/fe"
   version "26.0.1"
 
-  keg_only :versioned_formula
   version_scheme 1
+  keg_only :versioned_formula
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/argotorg/fe/releases/download/v26.0.1/fe_mac_arm64"
