@@ -1,27 +1,26 @@
 class Fe < Formula
   desc "Compiler for the Fe programming language"
   homepage "https://github.com/argotorg/fe"
-  version "26.0.1"
-  version_scheme 1
+  version "26.1.0"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/argotorg/fe/releases/download/v26.0.1/fe_mac_arm64"
-    sha256 "3c522365f498e008bd43d33ee7193a2c4ed1e66f1d7199fe91c3d2f0e202658e"
+    url "https://github.com/argotorg/fe/releases/download/v26.1.0/fe_mac_arm64"
+    sha256 "3ccffbf88537224e3bb2e4662627edc22bdedfc28e3351dec61e588eb87af0d8"
   end
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/argotorg/fe/releases/download/v26.0.1/fe_mac_amd64"
-    sha256 "91fe6a27050545af5c0f83b4d2cea949cf1c38f3edc8ed854a418574102df083"
+    url "https://github.com/argotorg/fe/releases/download/v26.1.0/fe_mac_amd64"
+    sha256 "b5a5ed8fc7fdf696d1b76944384cfd242fc6359b3f77051cae83e4e49ab344d8"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/argotorg/fe/releases/download/v26.0.1/fe_linux_amd64"
-    sha256 "a6f7a8740135fd330062b57d05970ee2ee4dda57b2e31cace2268015d9f954ad"
+    url "https://github.com/argotorg/fe/releases/download/v26.1.0/fe_linux_amd64"
+    sha256 "e179c7a4b1a913011b4919db38f915d860b8dedd23d8f81a4906d2b0c548e440"
   end
 
   if OS.linux? && Hardware::CPU.arm?
-    url "https://github.com/argotorg/fe/releases/download/v26.0.1/fe_linux_arm64"
-    sha256 "56373d4ebceb94887be1e32d1c07712ae40730a9bcfa9fff445e347cca104446"
+    url "https://github.com/argotorg/fe/releases/download/v26.1.0/fe_linux_arm64"
+    sha256 "bff9d74023fd18b6ab211ee73fde8a8ea9207dabd1d24de2b96af1c8900ce721"
   end
 
   def install
